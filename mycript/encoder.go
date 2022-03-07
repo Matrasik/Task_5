@@ -43,7 +43,7 @@ func (enc Encoder) SaveToFile(path string) (err error) {
 	return
 }
 
-func (enc *Encoder) CreateSign() {
+func (enc *Encoder) CreateSign() (err error) {
 	file, err := os.Open(enc.fileSource)
 	if err != nil {
 		return
