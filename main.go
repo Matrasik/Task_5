@@ -24,8 +24,14 @@ func main() {
 			log.Fatal(err)
 			return
 		}
-		encoder.CreateSign()
-		encoder.SaveToFile(outFile)
+		err = encoder.CreateSign()
+		if err != nil {
+			return
+		}
+		err = encoder.SaveToFile(outFile)
+		if err != nil {
+			return
+		}
 
 	case "dec":
 		decoder, err := mycript.NewDecoder(hashFile, fileSource, outFile)
@@ -33,7 +39,10 @@ func main() {
 			return
 		}
 
-		decoder.DecryptSha256()
+		err = decoder.DecryptSha256()
+		if err != nil {
+			return
+		}
 		decoder.Equality()
 	default:
 		log.Fatal("Use enc or dec param")

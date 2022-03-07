@@ -27,9 +27,6 @@ func NewDecoder(fileHash string, fileSource string, fileSigned string) (dec *Dec
 
 //add validate()
 
-//gen signature
-
-//build signature from signFile.txt
 func (dec *Decryptor) DecryptSha256() (err error) {
 	file, err := os.Open(dec.fileSigned)
 	defer file.Close()
@@ -48,7 +45,6 @@ func (dec *Decryptor) DecryptSha256() (err error) {
 	return
 }
 
-//signature.Equals(signature)
 func (dec Decryptor) Equality() {
 	file, err := os.Open(dec.fileSource)
 	if err != nil {
